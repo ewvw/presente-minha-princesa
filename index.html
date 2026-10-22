@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#09090c">
+<title>Para Minha Princesa ❤️</title>
+<style>
+  :root{--bg:#09090c;--panel:#151116;--red:#ff2448;--pink:#ff7b91;--muted:#c9b8bf;--white:#fff7f8}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:radial-gradient(ellipse at top,#32101c 0%,#100b10 38%,var(--bg) 75%);color:var(--white);font-family:Georgia,"Times New Roman",serif;overflow-x:hidden}
+  button{font:inherit}
+  .grain{position:fixed;inset:0;pointer-events:none;opacity:.08;z-index:1;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.3'/%3E%3C/svg%3E")}
+  .hero{min-height:100svh;display:flex;align-items:center;justify-content:center;text-align:center;padding:72px 22px 60px;position:relative}
+  .hero-inner{max-width:780px;position:relative;z-index:2}
+  .eyebrow{color:var(--pink);letter-spacing:.28em;text-transform:uppercase;font:600 .72rem Arial,sans-serif}
+  h1{font-size:clamp(3rem,10vw,6.7rem);line-height:.98;margin:22px 0 20px;font-weight:normal}
+  h1 span{color:var(--red);text-shadow:0 0 32px #ff24484a}
+  .subtitle{font:1.05rem/1.8 Arial,sans-serif;color:#e4d4da;max-width:540px;margin:0 auto 30px}
+  .button{border:1px solid #ff4966;background:linear-gradient(135deg,#ff2448,#b40d32);color:white;border-radius:999px;padding:14px 23px;cursor:pointer;box-shadow:0 8px 32px #ff24482c;transition:transform .2s,box-shadow .2s}
+  .button:hover{transform:translateY(-2px);box-shadow:0 10px 38px #ff244858}
+  .scroll-note{margin-top:45px;color:#a997a0;font: .75rem Arial,sans-serif;letter-spacing:.12em}
+  .heart{position:absolute;color:#ff3457;opacity:0;animation:floatUp linear forwards;pointer-events:none}
+  @keyframes floatUp{0%{transform:translateY(0) scale(.7) rotate(0);opacity:0}15%{opacity:.8}100%{transform:translateY(-115vh) scale(1.25) rotate(25deg);opacity:0}}
+  section{padding:80px 22px;position:relative;z-index:2}
+  .wrap{width:min(900px,100%);margin:auto}
+  .section-label{font:600 .7rem Arial,sans-serif;text-transform:uppercase;letter-spacing:.25em;color:var(--pink);text-align:center}
+  h2{text-align:center;font-size:clamp(2rem,6vw,3.5rem);font-weight:normal;margin:15px 0 24px}
+  .intro{color:var(--muted);font:1rem/1.8 Arial,sans-serif;text-align:center;max-width:650px;margin:0 auto 36px}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+  .card{background:linear-gradient(145deg,#20151c,#110e13);border:1px solid #52202e;border-radius:18px;padding:25px 20px;min-height:190px}
+  .card .emoji{font-size:1.7rem}
+  .card h3{font-size:1.25rem;font-weight:normal;margin:15px 0 10px}
+  .card p{color:#cdbcc3;font: .92rem/1.7 Arial,sans-serif;margin:0}
+  .letter-box{max-width:700px;margin:auto;border:1px solid #6c2436;background:linear-gradient(145deg,#1c1118,#100d12);border-radius:24px;padding:clamp(22px,5vw,44px);text-align:center;box-shadow:0 20px 70px #0005}
+  .letter{font:1rem/2 Arial,sans-serif;color:#e8dce1;text-align:left;white-space:pre-line;margin-top:25px}
+  .letter strong{color:#ff8197;font-weight:normal}
+  .hidden{display:none}
+  .reveal{animation:reveal .7s ease both}
+  @keyframes reveal{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+  .quote{font-size:clamp(1.6rem,4.5vw,2.8rem);line-height:1.45;text-align:center;max-width:800px;margin:0 auto}
+  .quote em{color:var(--pink);font-style:normal}
+  .signature{text-align:center;color:#cdbbc3;font: .95rem/1.8 Arial,sans-serif;margin-top:28px}
+  footer{padding:34px 20px 50px;text-align:center;color:#98858e;font: .8rem/1.8 Arial,sans-serif;position:relative;z-index:2}
+  .tiny-heart{color:var(--red)}
+  .music-note{font: .75rem Arial,sans-serif;color:#b9a5ae;margin-top:12px}
+  @media(max-width:650px){.cards{grid-template-columns:1fr}.card{min-height:auto}.hero{padding-top:55px}.subtitle{font-size:.98rem}section{padding:64px 18px}}
+  @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="grain"></div>
+<header class="hero" id="inicio">
+  <div class="hero-inner">
+    <div class="eyebrow">Uma surpresa feita com carinho</div>
+    <h1>Para você,<br><span>minha princesa.</span></h1>
+    <p class="subtitle">Tem gente que chega devagarinho e, quando a gente percebe, já deixou os dias mais bonitos. Você tem sido assim para mim. ❤️</p>
+    <button class="button" id="startBtn">Descubra sua surpresa ♥</button>
+    <div class="scroll-note">FEITO ESPECIALMENTE PARA VOCÊ · ARTHUR</div>
+  </div>
+</header>
+
+<section id="sobre">
+  <div class="wrap">
+    <div class="section-label">Uma coisa que eu queria te dizer</div>
+    <h2>Você tem algo especial.</h2>
+    <p class="intro">Talvez eu ainda esteja descobrindo cada detalhe seu, mas já gosto da forma como você consegue deixar um momento simples com um significado diferente.</p>
+    <div class="cards">
+      <article class="card"><div class="emoji">♡</div><h3>Seu jeito</h3><p>Tem algo em você que chama minha atenção e faz minha vontade de te conhecer ainda mais crescer.</p></article>
+      <article class="card"><div class="emoji">✦</div><h3>O que estamos vivendo</h3><p>Gosto de ver o que está nascendo entre nós, sem pressa, deixando cada conversa e cada sorriso valerem a pena.</p></article>
+      <article class="card"><div class="emoji">♥</div><h3>O que eu desejo</h3><p>Quero continuar criando lembranças com você e descobrir, um dia de cada vez, até onde essa história bonita pode chegar.</p></article>
+    </div>
+  </div>
+</section>
+
+<section id="carta">
+  <div class="wrap">
+    <div class="section-label">Abra quando quiser sorrir</div>
+    <h2>Uma cartinha para você</h2>
+    <div class="letter-box">
+      <div style="font-size:2.2rem;color:#ff4966">♥</div>
+      <p style="color:#e5cbd4;font-style:italic">“Algumas pessoas fazem a gente querer ficar mais um pouquinho.”</p>
+      <button class="button" id="letterBtn">Abrir minha carta 💌</button>
+      <div class="letter hidden" id="letterText">Minha princesa,
+
+Eu queria te dar alguma coisa que não fosse só bonita, mas que também carregasse um pouquinho do que sinto quando penso em você.
+
+A gente ainda está se conhecendo, e talvez seja justamente isso que torne tudo tão especial: cada conversa é uma nova descoberta, cada sorriso é um motivo para querer ficar mais perto e cada momento me deixa com vontade de conhecer mais de você.
+
+Não quero te prometer um conto de fadas nem dizer que já sei tudo sobre nós. Quero algo mais verdadeiro: continuar aqui, te conhecendo com carinho, cuidando do que estamos construindo e fazendo você sorrir sempre que eu puder.
+
+Você está se tornando alguém muito especial para mim. E, se depender de mim, ainda vamos colecionar muitos momentos bonitos — até que a distância vire apenas uma lembrança de como tudo começou.
+
+Fiz este cantinho para você porque queria que tivesse algo que pudesse abrir quando sentisse saudade ou simplesmente precisasse lembrar que existe alguém pensando em você com um sorriso no rosto.
+
+<strong>Com carinho, com um sorriso bobo e com o coração cada vez mais envolvido,</strong>
+
+<strong>Arthur ❤️</strong></div>
+    </div>
+  </div>
+</section>
+
+<section id="final">
+  <div class="wrap">
+    <div class="section-label">E antes de você ir...</div>
+    <p class="quote">Entre tantas pessoas no mundo, <em>que sorte a minha</em> estar conhecendo justamente você.</p>
+    <p class="signature">Não sei todas as páginas dessa história ainda.<br>Mas estou gostando muito de escrever as próximas com você.<br><br><strong style="color:#ff8197;font-weight:normal">— Arthur, para minha princesa ♥</strong></p>
+    <div style="text-align:center;margin-top:30px"><button class="button" id="heartBtn">Mandar um monte de amor ❤️</button></div>
+  </div>
+</section>
+<footer>
+  Feito com carinho, especialmente para você.<br>
+  <span class="tiny-heart">♥</span> De Arthur para minha princesa <span class="tiny-heart">♥</span>
+  <div class="music-note">Dica: abra este presente com sua música favorita tocando ao fundo.</div>
+</footer>
+<script>
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function burst(amount=18){
+    if(reduceMotion)return;
+    for(let i=0;i<amount;i++){
+      const el=document.createElement('span');
+      el.className='heart';el.textContent=['♥','♡','❤'][Math.floor(Math.random()*3)];
+      el.style.left=(Math.random()*100)+'vw';
+      el.style.bottom=(-5-Math.random()*15)+'px';
+      el.style.fontSize=(14+Math.random()*25)+'px';
+      el.style.animationDuration=(3+Math.random()*3)+'s';
+      document.body.appendChild(el);
+      setTimeout(()=>el.remove(),6500);
+    }
+  }
+  document.getElementById('startBtn').addEventListener('click',()=>{
+    document.getElementById('sobre').scrollIntoView({behavior:reduceMotion?'auto':'smooth'});
+    burst(24);
+  });
+  document.getElementById('letterBtn').addEventListener('click',()=>{
+    const t=document.getElementById('letterText');
+    t.classList.toggle('hidden');
+    if(!t.classList.contains('hidden')){
+      t.classList.add('reveal');
+      document.getElementById('letterBtn').textContent='Fechar a carta ♥';
+      burst(15);
+    }else{
+      t.classList.remove('reveal');
+      document.getElementById('letterBtn').textContent='Abrir minha carta 💌';
+    }
+  });
+  document.getElementById('heartBtn').addEventListener('click',()=>burst(50));
+  let last=0;
+  window.addEventListener('scroll',()=>{
+    const now=Date.now();
+    if(now-last>1400 && Math.random()>.6){burst(2);last=now;}
+  },{passive:true});
+</script>
+</body>
+</html>
