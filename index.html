@@ -1,14 +1,86 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b080d"><title>Uma missão para minha princesa ❤️</title><style>
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top,#451224,#100b13 65%,#08070b);color:#fff2f5;font-family:system-ui,sans-serif}main{max-width:850px;margin:auto;padding:24px 15px 45px}header{text-align:center;padding:20px 0}small{color:#ff91a7;letter-spacing:.2em;text-transform:uppercase}h1{font-size:clamp(2.2rem,7vw,4rem);line-height:1.05;margin:15px 0}h1 em{color:#ff3157;font-style:normal}p{color:#d9c4cd;line-height:1.7}.panel{background:#160e17;border:1px solid #63263a;border-radius:22px;padding:15px;box-shadow:0 20px 60px #0005}.bar{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-bottom:12px;color:#ffc1cf;font-size:.9rem}.pill{background:#2a111e;border-radius:20px;padding:7px 11px}canvas{width:100%;height:auto;display:block;border-radius:14px;border:1px solid #512337;touch-action:manipulation}.controls{display:flex;gap:9px;justify-content:center;flex-wrap:wrap;margin:14px 0 4px}button{background:linear-gradient(135deg,#ff3157,#b7153b);border:1px solid #ff7690;color:white;font-weight:700;padding:12px 17px;border-radius:25px;cursor:pointer}button.alt{background:#21141e;border-color:#754057}.help{text-align:center;font-size:.88rem}.message{display:none;text-align:center;margin-top:16px;padding:18px;border-radius:17px;background:#270e1a;border:1px solid #87304a}.message.show{display:block;animation:pop .4s}.message h2{color:#ff91a7}.sign{color:#ff91a7}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}.card{background:#140e15;border:1px solid #3f2632;border-radius:14px;padding:14px}.card b{display:block;color:#ff91a7;margin-bottom:5px}.card span{font-size:.88rem;color:#cbb7c1;line-height:1.5}footer{text-align:center;color:#95808b;font-size:.8rem;margin-top:25px}@keyframes pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}@media(max-width:600px){.cards{grid-template-columns:1fr}.panel{padding:10px}}
-</style></head><body><main><header><small>Uma surpresa feita pelo Arthur</small><h1>Uma missão para<br><em>minha princesa ♥</em></h1><p>Uma fase pequenininha, só sua. Pegue os corações, desvie dos obstáculos e desbloqueie uma mensagem minha no final. 🎮</p></header><section class="panel"><div class="bar"><span class="pill">❤️ Corações: <b id="score">0</b>/8</span><span class="pill">Fase 1 · Nossa aventura</span><span class="pill" id="status">Pronta para jogar?</span></div><canvas id="game" width="800" height="390"></canvas><div class="controls"><button id="start">Começar / recomeçar</button><button class="alt" id="left">◀</button><button class="alt" id="jump">Pular ♥</button><button class="alt" id="right">▶</button></div><p class="help">Computador: ← → para andar e Espaço para pular. Celular: use os botões. Colete 8 corações para ver a surpresa.</p><div class="message" id="message"><h2>Você conseguiu, minha princesa! ❤️</h2><p>Missão completa! Mas minha parte favorita nem é ganhar o jogo — é passar meu tempo com você. Gosto das nossas conversas, das nossas risadas e de jogar junto, mesmo cada um estando de um lado da tela. Você deixa tudo mais divertido pra mim. Espero que a gente ainda tenha muitas calls, muitos jogos e vários momentos bons pela frente. 🖤</p><p class="sign">Fiz isso pensando em você. — Arthur</p><button id="again">Jogar de novo</button></div></section><div class="cards"><div class="card"><b>🎮 Objetivo</b><span>Junte 8 corações para completar a missão.</span></div><div class="card"><b>🖤 Feito para você</b><span>Um joguinho romântico inspirado nos momentos que vocês passam juntos.</span></div><div class="card"><b>💌 Surpresa final</b><span>A mensagem aparece quando você coleta todos os corações.</span></div></div><footer>Feito com carinho, de Arthur para sua princesa. ♥</footer></main>
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b080d">
+<title>Uma missão para minha princesa ❤️</title>
+<style>
+:root{--bg:#0b080d;--red:#ff3157;--pink:#ff9bb0;--white:#fff4f6;--muted:#d6c1ca}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:radial-gradient(circle at top,#491326,#160b14 54%,#09070b);color:var(--white);font-family:system-ui,-apple-system,Segoe UI,sans-serif}
+main{width:min(850px,100%);margin:auto;padding:22px 14px 42px}
+header{text-align:center;padding:18px 0 20px}
+.kicker{font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--pink)}
+h1{font-size:clamp(2.1rem,7vw,4rem);line-height:1.04;margin:13px 0}
+h1 em{font-style:normal;color:var(--red)}
+p{line-height:1.7;color:var(--muted)}
+.panel{background:linear-gradient(145deg,#21121c,#100b13);border:1px solid #63253a;border-radius:22px;padding:clamp(13px,3vw,22px);box-shadow:0 18px 55px #0006}
+.top{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:12px;font-size:.88rem;color:#ffc5d1}
+.pill{padding:7px 11px;border-radius:99px;background:#30111e}
+canvas{width:100%;height:auto;display:block;border-radius:14px;border:1px solid #522237;background:#100b14;touch-action:manipulation}
+.controls{display:flex;gap:9px;justify-content:center;flex-wrap:wrap;margin:14px 0 4px}
+button{border:1px solid #ff708b;border-radius:99px;background:linear-gradient(135deg,#ff3157,#b7153b);color:white;font-weight:750;padding:12px 17px;cursor:pointer;touch-action:manipulation}
+button.secondary{background:#21141e;border-color:#714052}
+.help{text-align:center;font-size:.88rem;margin-bottom:0}
+.screen{display:none;text-align:center;padding:22px 10px}
+.screen.show{display:block;animation:fade .4s ease}
+.screen h2{font-size:clamp(1.7rem,5vw,2.7rem);color:var(--pink);margin:10px 0}
+.bigheart{font-size:3rem;animation:pulse 1.3s infinite}
+.letter{max-width:600px;margin:12px auto 22px;line-height:1.85}
+.buttons{display:flex;gap:14px;justify-content:center;align-items:center;flex-wrap:wrap;min-height:70px;position:relative}
+#yes{font-size:1.1rem;padding:15px 25px}
+#no{background:#32212a;border-color:#6e4a59;transition:transform .12s}
+.result{display:none;text-align:center;padding:24px 8px}
+.result.show{display:block;animation:fade .5s}
+.result h2{font-size:clamp(2rem,7vw,3.5rem);color:#ff7893}
+.result p{font-size:1.05rem}
+.small{font-size:.82rem;color:#9f8994;text-align:center;margin-top:22px}
+@keyframes fade{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:none}}
+@keyframes pulse{50%{transform:scale(1.12)}}
+@media(max-width:520px){.panel{padding:10px}.top{font-size:.78rem}button{padding:12px 14px}.buttons{gap:9px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style></head>
+<body><main>
+<header><div class="kicker">Uma surpresa feita pelo Arthur</div><h1>Uma missão para<br><em>minha princesa ♥</em></h1><p>É bem facinho, prometo kkkkk ❤️ Só passe o mouse (ou toque na tela) nos corações para completar a missão. Depois tem uma pergunta importante...</p></header>
+<section class="panel" id="gamePanel">
+<div class="top"><span class="pill">❤️ Corações: <b id="score">0</b>/5</span><span class="pill">Fase 1 · Fácil demais 😌</span><span class="pill" id="status">Pode começar!</span></div>
+<canvas id="game" width="800" height="340" aria-label="Passe o cursor ou toque nos cinco corações para avançar"></canvas>
+<div class="controls"><button id="start">Começar de novo</button></div>
+<p class="help">É só passar o cursor por cima dos corações ou tocar neles no celular. Não precisa pular nem desviar de nada! 💗</p>
+<div class="screen" id="ask">
+<div class="bigheart">💗</div>
+<div class="kicker">Missão concluída</div>
+<h2>Agora tenho uma pergunta pra você...</h2>
+<p class="letter">Eu gosto muito de passar meu tempo com você, de conversar, dar risada e jogar junto. Você foi ficando cada vez mais especial pra mim, e eu queria saber se você topa dar mais um passinho nessa nossa história. ❤️</p>
+<h2>Minha princesa, aceita namorar comigo? 🥹❤️</h2>
+<div class="buttons" id="buttonArea"><button id="yes">SIM! ❤️</button><button id="no" aria-label="Não">Não 🙈</button></div>
+<p class="help">Escolhe com carinho… (o botão “não” é meio tímido kkkkk)</p>
+</div>
+<div class="result" id="result"><div class="bigheart">💖💖💖</div><h2>AAAAA, EU TE AMO— quer dizer, EU TÔ MUITO FELIZ! 🥹❤️</h2><p>Você acabou de deixar meu dia perfeito. Mal posso esperar por mais calls, jogos, risadas e por tudo que a gente ainda vai viver juntinhos.</p><p><b>Um beijo, Arthur ❤️</b></p><button id="replay">Jogar de novo</button></div>
+</section>
+<p class="small">Feito com carinho, um pouquinho de vergonha e muita vontade de te ver sorrir. — Arthur ♥</p>
+</main>
 <script>
-const c=document.querySelector('#game'),x=c.getContext('2d'),W=800,H=390,G=325;let p,hs,obs,score,run,keys={},frame=0,raf;
-function reset(){cancelAnimationFrame(raf);p={x:60,y:G-40,w:30,h:40,vy:0,ground:true};hs=Array.from({length:8},(_,i)=>({x:135+i*85,y:175+(i%3)*38,got:false,b:Math.random()*5}));obs=[{x:290,v:2},{x:520,v:2.5},{x:690,v:2.2}];score=0;frame=0;run=true;keys={};document.querySelector('#score').textContent=0;document.querySelector('#status').textContent='Vai, princesa!';document.querySelector('#message').classList.remove('show');loop()}
-function heart(a,b,s,col){x.save();x.translate(a,b);x.scale(s/20,s/20);x.beginPath();x.moveTo(0,7);x.bezierCurveTo(-18,-4,-10,-16,0,-7);x.bezierCurveTo(10,-16,18,-4,0,7);x.fillStyle=col;x.fill();x.restore()}
-function rect(a,b,w,h,r,col){x.fillStyle=col;x.beginPath();x.roundRect(a,b,w,h,r);x.fill()}
-function draw(){x.clearRect(0,0,W,H);let gr=x.createLinearGradient(0,0,0,H);gr.addColorStop(0,'#211126');gr.addColorStop(1,'#0c0910');x.fillStyle=gr;x.fillRect(0,0,W,H);for(let i=0;i<45;i++){x.fillStyle=i%4?'#74506f':'#ffc1cf';x.globalAlpha=.45;x.fillRect((i*139+20)%W,(i*67+10)%250,2,2)}x.globalAlpha=1;x.fillStyle='#ffc1cf';x.beginPath();x.arc(710,60,23,0,7);x.fill();x.fillStyle='#241024';x.beginPath();x.arc(720,53,21,0,7);x.fill();x.fillStyle='#27102c';x.beginPath();x.moveTo(0,285);x.quadraticCurveTo(150,220,280,285);x.quadraticCurveTo(500,225,800,270);x.lineTo(800,390);x.lineTo(0,390);x.fill();rect(0,G,W,H-G,0,'#321421');x.fillStyle='#78304b';x.fillRect(0,G,W,4);hs.forEach(h=>{if(!h.got)heart(h.x,h.y+Math.sin(frame/12+h.b)*5,25,'#ff3157')});obs.forEach(o=>{rect(o.x,G-24,34,24,10,'#756073');x.beginPath();x.arc(o.x+12,G-24,11,0,7);x.fillStyle='#756073';x.fill()});x.fillStyle='#ffb8c7';x.beginPath();x.arc(p.x+15,p.y+10,12,0,7);x.fill();x.fillStyle='#39202c';x.beginPath();x.arc(p.x+15,p.y+7,13,Math.PI,Math.PI*2);x.lineTo(p.x+28,p.y+14);x.lineTo(p.x+8,p.y+14);x.fill();rect(p.x+4,p.y+22,23,18,7,'#ff3157');x.fillStyle='#f7dce4';x.fillRect(p.x+5,p.y+37,9,3);x.fillRect(p.x+19,p.y+37,9,3)}
-function hit(a,b){return a.x<b.x+b.w&&a.x+a.w>b.x&&a.y<b.y+b.h&&a.y+a.h>b.y}
-function loop(){if(!run)return;frame++;p.vx=(keys.right||keys.ArrowRight?3.8:0)-(keys.left||keys.ArrowLeft?3.8:0);p.x=Math.max(0,Math.min(W-p.w,p.x+p.vx));p.vy+=.55;p.y+=p.vy;if(p.y+p.h>=G){p.y=G-p.h;p.vy=0;p.ground=true}obs.forEach(o=>{o.x-=o.v;if(o.x<-40)o.x=W+Math.random()*100;if(hit(p,{x:o.x,y:G-25,w:34,h:25})){p.x=Math.max(0,p.x-26);p.vy=-2}});hs.forEach(h=>{if(!h.got&&hit(p,{x:h.x-11,y:h.y-11,w:22,h:22})){h.got=true;score++;document.querySelector('#score').textContent=score;if(score===8){run=false;document.querySelector('#status').textContent='Missão completa!';document.querySelector('#message').classList.add('show')}}});draw();if(run)raf=requestAnimationFrame(loop)}
-function jump(){if(run&&p.ground){p.vy=-10.5;p.ground=false}}
-document.querySelector('#start').onclick=reset;document.querySelector('#again').onclick=reset;document.querySelector('#jump').onclick=jump;['left','right'].forEach(id=>{let b=document.querySelector('#'+id);b.onpointerdown=()=>keys[id]=true;['pointerup','pointerleave','pointercancel'].forEach(ev=>b.addEventListener(ev,()=>keys[id]=false))});addEventListener('keydown',e=>{if(['ArrowLeft','ArrowRight',' '].includes(e.key))e.preventDefault();keys[e.key===' '?'Space':e.key]=true;if(e.key===' ')jump()});addEventListener('keyup',e=>keys[e.key===' '?'Space':e.key]=false);reset();
+const c=document.querySelector('#game'),ctx=c.getContext('2d'),scoreEl=document.querySelector('#score'),statusEl=document.querySelector('#status');
+let hearts=[],score=0,active=false,raf=0,frame=0;
+const W=800,H=340;
+function setup(){cancelAnimationFrame(raf);score=0;frame=0;active=true;hearts=[
+{x:130,y:110,got:false},{x:270,y:215,got:false},{x:400,y:95,got:false},{x:535,y:205,got:false},{x:680,y:110,got:false}
+];scoreEl.textContent='0';statusEl.textContent='Passe nos corações!';document.querySelector('#ask').classList.remove('show');document.querySelector('#result').classList.remove('show');document.querySelector('#game').style.display='block';document.querySelector('.controls').style.display='flex';document.querySelector('.help').style.display='block';draw();animate()}
+function heart(x,y,size,color){ctx.save();ctx.translate(x,y);ctx.scale(size/20,size/20);ctx.beginPath();ctx.moveTo(0,7);ctx.bezierCurveTo(-18,-4,-10,-16,0,-7);ctx.bezierCurveTo(10,-16,18,-4,0,7);ctx.fillStyle=color;ctx.fill();ctx.restore()}
+function draw(){ctx.clearRect(0,0,W,H);let g=ctx.createLinearGradient(0,0,0,H);g.addColorStop(0,'#241128');g.addColorStop(1,'#100b14');ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+for(let i=0;i<55;i++){ctx.globalAlpha=.3+(i%3)*.12;ctx.fillStyle=i%4===0?'#ffb7c7':'#926180';ctx.beginPath();ctx.arc((i*137+20)%W,(i*71+15)%H,1.7,0,7);ctx.fill()}ctx.globalAlpha=1;
+ctx.fillStyle='#3b172b';ctx.beginPath();ctx.moveTo(0,280);ctx.quadraticCurveTo(150,225,300,280);ctx.quadraticCurveTo(520,220,800,275);ctx.lineTo(800,H);ctx.lineTo(0,H);ctx.fill();
+hearts.forEach((h,i)=>{if(!h.got){let y=h.y+Math.sin(frame/16+i)*5;heart(h.x,y,42,'#ff3157');ctx.globalAlpha=.2;heart(h.x,y,58,'#ff3157');ctx.globalAlpha=1;ctx.font='17px system-ui';ctx.fillStyle='#ffe5eb';ctx.textAlign='center';ctx.fillText('♥',h.x,y+5)}})
+}
+function animate(){if(!active)return;frame++;draw();raf=requestAnimationFrame(animate)}
+function collectAt(clientX,clientY){if(!active)return;const r=c.getBoundingClientRect(),x=(clientX-r.left)*W/r.width,y=(clientY-r.top)*H/r.height;let found=false;hearts.forEach(h=>{if(!h.got&&Math.hypot(x-h.x,y-h.y)<48){h.got=true;score++;found=true;scoreEl.textContent=score}});if(found){draw();if(score>=5){active=false;cancelAnimationFrame(raf);statusEl.textContent='Fase concluída!';document.querySelector('#game').style.display='none';document.querySelector('.controls').style.display='none';document.querySelector('.help').style.display='none';document.querySelector('#ask').classList.add('show')}}}
+c.addEventListener('pointermove',e=>{if(e.pointerType==='mouse')collectAt(e.clientX,e.clientY)});c.addEventListener('pointerdown',e=>collectAt(e.clientX,e.clientY));
+document.querySelector('#start').onclick=setup;
+const no=document.querySelector('#no'),area=document.querySelector('#buttonArea');
+function dodge(){const a=area.getBoundingClientRect(),b=no.getBoundingClientRect();const maxX=Math.max(0,a.width-b.width),maxY=35;no.style.position='relative';no.style.transform=`translate(${Math.round(Math.random()*maxX-maxX/2)}px, ${Math.round(Math.random()*maxY-maxY/2)}px)`;}
+no.addEventListener('pointerenter',dodge);no.addEventListener('pointerdown',e=>{e.preventDefault();dodge()});no.addEventListener('click',e=>{e.preventDefault();dodge()});
+document.querySelector('#yes').onclick=()=>{document.querySelector('#ask').classList.remove('show');document.querySelector('#result').classList.add('show');statusEl.textContent='Melhor resposta! ❤️'};
+document.querySelector('#replay').onclick=setup;
+setup();
 </script></body></html>
